@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@theme {
+  /* Typography */
+  --font-display: "Plus Jakarta Sans", "Inter", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  /* Brand Colors */
+  --color-primary: #5A3384;
+  --color-primary-hover: #4a2374;
+  --color-primary-soft: rgba(90, 51, 132, 0.05);
+  
+  /* Text Colors */
+  --color-heading: #3F3F46;
+  --color-body: #525252;
+  --color-muted: #71717A;
+  
+  /* Backgrounds & Borders */
+  --color-surface: #FFFFFF;
+  --color-surface-alt: #FAFAFA;
+  --color-border: rgba(9, 9, 11, 0.05);
+  --color-border-strong: rgba(9, 9, 11, 0.1);
+
+  /* Elevation & Shape */
+  --radius-card: 40px;
+  --radius-button: 100px;
+  --shadow-premium: 0 20px 40px rgba(0, 0, 0, 0.05);
+  --shadow-hover: 0 40px 80px rgba(0, 0, 0, 0.1);
+}
+
+@layer base {
+  html, body {
+    @apply m-0 p-0 w-full bg-surface text-body font-body selection:bg-primary selection:text-white;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display text-heading tracking-[-0.02em];
+  }
+
+  p {
+    @apply leading-[1.6];
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .container-custom {
+    @apply max-w-[1440px] mx-auto px-6 md:px-12 lg:px-20;
+  }
+  
+  .glass-light {
+    @apply bg-surface/70 backdrop-blur-md border border-border;
+  }
+
+  .card-premium {
+    @apply bg-surface-alt rounded-card border border-border shadow-premium transition-all duration-500 hover:shadow-hover hover:bg-surface;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white rounded-full px-8 py-4 font-bold transition-all hover:bg-primary-hover hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-primary/20;
+  }
+
+  .btn-outline {
+    @apply bg-surface/80 border border-primary/10 text-primary rounded-full px-8 py-4 font-bold transition-all hover:bg-primary-soft hover:scale-[1.02] active:scale-[0.98];
+  }
+}
+
+/* Hide Scrollbar while maintaining scrolling */
+html, body {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+

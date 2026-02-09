@@ -1,39 +1,82 @@
+import { motion } from 'framer-motion'
+
 const Footer = () => {
+  const navLinks = [
+    { name: "Solutions", href: "#solutions" },
+    { name: "Products", href: "#products" },
+    { name: "Industries", href: "#industries" },
+    { name: "About", href: "#about" },
+    { name: "Why Us", href: "#why-us" },
+    { name: "Resources", href: "#resources" },
+    { name: "Careers", href: "#careers" },
+  ]
+
+  const legalLinks = [
+    { name: "Privacy Policy", href: "#" },
+    { name: "Terms of Service", href: "#" },
+    { name: "Cookies Settings", href: "#" },
+  ]
+
   return (
-    <footer className="pt-4 pb-4 px-2 md:px-6 bg-white overflow-hidden">
-      <div className="mx-auto w-full md:w-fit max-w-full">
-        {/* Navigation Row */}
-        <div className="w-full flex flex-col items-center gap-6 mb-8 md:flex-row md:justify-between md:mb-4">
-          <div className="flex flex-nowrap justify-center gap-x-3 md:gap-x-8 text-zinc-500 font-medium text-[9px] sm:text-[11px] md:text-sm whitespace-nowrap">
-            <a href="#solutions" className="hover:text-heading transition-colors">Solutions</a>
-            <a href="#products" className="hover:text-heading transition-colors">Products</a>
-            <a href="#industries" className="hover:text-heading transition-colors">Industries</a>
-            <a href="#about" className="hover:text-heading transition-colors">About</a>
-            <a href="#" className="hover:text-heading transition-colors">Why Us</a>
-            <a href="#" className="hover:text-heading transition-colors">Resources</a>
-            <a href="#careers" className="hover:text-heading transition-colors">Careers</a>
-          </div>
-          <div className="flex justify-center gap-6 text-black font-semibold text-[11px] md:text-sm">
-            <a href="#" className="underline underline-offset-4 decoration-1 hover:text-zinc-600 transition-colors">Privacy Policy</a>
-            <a href="#" className="underline underline-offset-4 decoration-1 hover:text-zinc-600 transition-colors">Terms of Service</a>
-            <a href="#" className="underline underline-offset-4 decoration-1 hover:text-zinc-600 transition-colors">Cookies Settings</a>
-          </div>
+    <footer className="pt-24 pb-8 bg-surface border-t border-border overflow-hidden">
+      <div className="container-custom">
+        {/* Top Navigation Row */}
+        <div className="flex flex-col md:flex-row justify-between items-center gap-10 mb-20">
+          <motion.div 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-3 md:gap-x-10"
+          >
+            {navLinks.map((link) => (
+              <a 
+                key={link.name} 
+                href={link.href} 
+                className="text-muted text-sm font-bold tracking-tight hover:text-primary transition-colors duration-300"
+              >
+                {link.name}
+              </a>
+            ))}
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="flex items-center gap-8"
+          >
+            {legalLinks.map((link) => (
+              <a 
+                key={link.name} 
+                href={link.href} 
+                className="text-heading text-[12px] font-black uppercase tracking-widest border-b border-border hover:border-primary transition-colors duration-300"
+              >
+                {link.name}
+              </a>
+            ))}
+          </motion.div>
         </div>
 
-        {/* Branding Row */}
-        <div className="relative flex justify-center w-full overflow-visible">
-          <h1
-            className="font-bold italic select-none text-center pointer-events-none bg-gradient-to-r from-[#A09DBC] via-[#DBD7EE] to-[#A09DBC] bg-clip-text text-transparent overflow-visible whitespace-nowrap"
+        {/* Massive Branding Row */}
+        <div className="relative flex justify-center w-full select-none pointer-events-none">
+          <motion.h2
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+            className="font-display font-extrabold italic tracking-[-0.04em] leading-none text-transparent bg-clip-text bg-linear-to-b from-heading/30 via-heading/5 to-transparent pb-4"
             style={{
-              fontFamily: 'Calibri, sans-serif',
-              fontSize: 'clamp(40px, 20vw, 282.77px)',
-              lineHeight: '100%',
-              letterSpacing: '0%',
-              paddingRight: '0.05em'
+              fontSize: 'clamp(60px, 20vw, 320px)',
             }}
           >
             SanharSGT
-          </h1>
+          </motion.h2>
+
+          {/* Copyright Floating */}
+          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-[10px] font-black tracking-[0.3em] uppercase text-muted/40">
+            © 2024 Sanhar SGT. All Rights Reserved.
+          </div>
         </div>
       </div>
     </footer>
@@ -41,3 +84,4 @@ const Footer = () => {
 }
 
 export default Footer
+

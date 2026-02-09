@@ -53,6 +53,7 @@ const Platforms = () => {
                 }}
                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                 onClick={() => setActiveIndex(index)}
+                onMouseEnter={() => !isMobile && setActiveIndex(index)}
                 className={`relative flex flex-col md:flex-row h-full border-b md:border-b-0 md:border-r border-border last:border-b-0 last:border-r-0 cursor-pointer overflow-hidden group`}
               >
                 {/* Tab Trigger / Sidebar */}

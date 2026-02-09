@@ -1,99 +1,170 @@
-import { useRef, useEffect } from 'react'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-gsap.registerPlugin(ScrollTrigger)
+import { motion } from 'framer-motion'
+import { useRef } from 'react'
+import { aboutContent } from '../data/aboutContent'
 
 const About = () => {
     const sectionRef = useRef(null)
 
-    useEffect(() => {
-        const ctx = gsap.context(() => {
-            gsap.from(".about-left > *", {
-                scrollTrigger: {
-                    trigger: ".about-left",
-                    start: "top 80%",
-                },
-                x: -50,
-                opacity: 0,
-                duration: 0.8,
-                stagger: 0.2
-            })
-            gsap.from(".about-card", {
-                scrollTrigger: {
-                    trigger: ".about-right",
-                    start: "top 80%",
-                },
-                x: 50,
-                opacity: 0,
-                duration: 0.8,
-                stagger: 0.2
-            })
-        }, sectionRef)
-        return () => ctx.revert()
-    }, [])
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1,
+                delayChildren: 0.2
+            }
+        }
+    }
+
+    const itemVariants = {
+        hidden: { y: 20, opacity: 0 },
+        visible: {
+            y: 0,
+            opacity: 1,
+            transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
+        }
+    }
 
     return (
-        <section id="about" ref={sectionRef} className="pt-8 pb-24 px-6 bg-surface overflow-hidden">
-            <div className="max-w-[1440px] mx-auto">
-                <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-start">
-                    <div className="lg:w-1/2 about-left">
-                        <div className="inline-flex items-center gap-3 px-5 py-2.5 bg-primary-soft border border-primary/10 rounded-full text-primary text-xs font-black tracking-widest uppercase mb-10">
-                            <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-                            ABOUT US
-                        </div>
-                        <h2 className="text-[30px] sm:text-[42px] md:text-[52px] lg:text-[64px] leading-[1.1] font-extrabold mb-8 text-heading tracking-[-0.03em]">
-                            Two Decades of <br />
-                            Digital Excellence
-                        </h2>
-                        <div className="space-y-6 text-base md:text-lg text-body font-medium leading-relaxed max-w-xl">
-                            <p>SANHAR SGT designs and delivers enterprise-grade digital infrastructure for mission-critical organizations worldwide.</p>
-                            <p>Our work spans hospital information systems, enterprise resource planning, and advanced analytics that drive precision and growth.</p>
-                            <p>With over 20 years of experience, we've helped 200+ clients across 12 countries modernize their digital footprint.</p>
-                        </div>
-                    </div>
+        <section id="about" ref={sectionRef} className="py-24 px-6 bg-surface relative overflow-hidden">
+            {/* Background Decorative Element */}
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/2 rounded-full blur-[120px] -mr-64 -mt-64 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-primary/3 rounded-full blur-[120px] -ml-64 -mb-64 pointer-events-none" />
 
-                    <div className="lg:w-1/2 about-right grid grid-cols-1 gap-6">
-                        {[
-                            { title: "Global Presence", text: "Operating in 12 countries with 8 local office locations." },
-                            { title: "Expert Team", text: "Healthcare IT specialists, enterprise architects and engineers." },
-                            { title: "Certified & Compliant", text: "HIPAA, ISO 9001 and secure global infrastructures." }
-                        ].map((item, i) => (
-                            <div
-                                key={i}
-                                className="about-card card-premium p-8 md:p-10 flex gap-6 md:gap-8 items-start group"
-                            >
-                                <div className="w-14 h-14 md:w-16 md:h-16 bg-surface rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-primary transition-colors shadow-sm">
-                                    <div className="w-5 h-5 md:w-6 md:h-6 bg-surface-alt group-hover:bg-white/30 rounded-full" />
-                                </div>
-                                <div>
-                                    <h3 className="text-xl md:text-2xl font-extrabold mb-2 md:mb-3 text-heading">{item.title}</h3>
-                                    <p className="text-sm md:text-base text-body font-medium">{item.text}</p>
+            <div className="container-custom">
+                {/* Section Header */}
+                <div className="text-center mb-16">
+                    <motion.div 
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="inline-flex items-center gap-2 px-4 py-2 bg-primary-soft border border-primary/10 rounded-full text-primary text-[10px] font-black tracking-[0.2em] uppercase mb-6"
+                    >
+                        <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />
+                        {aboutContent.badge}
+                    </motion.div>
+                    <motion.h2 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-[32px] md:text-[56px] leading-[1.1] font-extrabold text-heading tracking-[-0.03em] max-w-3xl mx-auto"
+                    >
+                        {aboutContent.heading}
+                    </motion.h2>
+                </div>
+
+                {/* Bento Grid Layout */}
+                <motion.div 
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
+                    className="grid grid-cols-1 md:grid-cols-12 gap-5 md:gap-6"
+                >
+                    {/* Main Story Card */}
+                    <motion.div 
+                        variants={itemVariants}
+                        className="md:col-span-8 p-8 md:p-12 rounded-[32px] bg-surface-alt border border-border relative overflow-hidden group shadow-sm hover:shadow-xl transition-all duration-500"
+                    >
+                        <div className="relative z-10 h-full flex flex-col justify-between">
+                            <div>
+                                <h3 className="text-2xl md:text-3xl font-extrabold text-heading mb-6 tracking-tight">
+                                    {aboutContent.mainStory.title}
+                                </h3>
+                                <div className="space-y-4 text-body text-base md:text-lg font-medium leading-relaxed max-w-2xl">
+                                    {aboutContent.mainStory.paragraphs.map((p, i) => (
+                                        <p key={i} className={i > 0 ? "hidden md:block" : ""}>
+                                            {p}
+                                        </p>
+                                    ))}
                                 </div>
                             </div>
-                        ))}
-                    </div>
-                </div>
+                            <div className="mt-8 pt-8 border-t border-border/50 flex flex-wrap gap-10">
+                                {aboutContent.mainStory.stats.map((stat, i) => (
+                                    <div key={i}>
+                                        <div className="text-3xl font-black text-primary mb-1">{stat.value}</div>
+                                        <div className="text-xs font-bold text-muted uppercase tracking-widest">{stat.label}</div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -mr-32 -mt-32 group-hover:bg-primary/10 transition-colors duration-700" />
+                    </motion.div>
 
-                {/* Vision/Mission Row */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-24">
-                    <div className="p-12 md:p-16 rounded-card bg-heading text-white relative overflow-hidden group">
-                        <div className="absolute top-0 right-0 w-48 md:w-64 h-48 md:h-64 bg-primary/20 rounded-bl-[200px] transition-all group-hover:scale-110" />
-                        <h3 className="uppercase tracking-widest text-xs font-black text-primary mb-6">Our Vision</h3>
-                        <p className="text-xl md:text-2xl font-bold leading-relaxed relative z-10 italic">
-                            "To be the trusted foundation for mission-critical organizations globally, powering the future of healthcare."
-                        </p>
-                    </div>
-                    <div className="p-12 md:p-16 rounded-card bg-primary text-white relative overflow-hidden group">
-                        <div className="absolute top-0 right-0 w-48 md:w-64 h-48 md:h-64 bg-white/10 rounded-bl-[200px] transition-all group-hover:scale-110" />
-                        <h3 className="uppercase tracking-widest text-xs font-black text-white/50 mb-6">Our Mission</h3>
-                        <p className="text-xl md:text-2xl font-bold leading-relaxed relative z-10">
-                            To deliver systems that evolve with the organization, ensuring scalability, security and superior performance.
-                        </p>
-                    </div>
-                </div>
+                    {/* Image/Visual Card */}
+                    <motion.div 
+                        variants={itemVariants}
+                        className="md:col-span-4 rounded-[32px] bg-heading overflow-hidden relative group min-h-[300px]"
+                    >
+                        <img 
+                            src="https://images.unsplash.com/photo-1576089234280-2a3d3963220c?auto=format&fit=crop&q=80&w=800"
+                            alt="Global Healthcare Tech"
+                            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-primary/20 mix-blend-overlay z-10" />
+                        <div className="absolute inset-0 bg-heading/40 z-10 group-hover:bg-heading/20 transition-colors duration-500" />
+                        <div className="absolute inset-0 flex items-center justify-center p-8 z-20">
+                            <div className="text-center">
+                                <div className="w-20 h-20 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center mx-auto mb-6 border border-white/20">
+                                    <div className="w-8 h-8 rounded-full border-2 border-white animate-ping" />
+                                </div>
+                                <h4 className="text-white text-xl font-bold mb-2">{aboutContent.visualCard.title}</h4>
+                                <p className="text-white/80 text-sm font-medium">{aboutContent.visualCard.description}</p>
+                            </div>
+                        </div>
+                    </motion.div>
+
+                    {/* Vision Card */}
+                    <motion.div 
+                        variants={itemVariants}
+                        className="md:col-span-6 p-8 md:p-12 rounded-[32px] bg-primary text-white border border-primary/10 relative overflow-hidden group shadow-lg shadow-primary/10"
+                    >
+                        <div className="relative z-10">
+                            <div className="text-[10px] font-black tracking-[0.3em] uppercase opacity-60 mb-8 italic">{aboutContent.vision.label}</div>
+                            <p className="text-2xl md:text-3xl font-bold leading-[1.3] tracking-tight">
+                                "{aboutContent.vision.quote}"
+                            </p>
+                        </div>
+                        <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-white/10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-1000" />
+                    </motion.div>
+
+                    {/* Mission Card */}
+                    <motion.div 
+                        variants={itemVariants}
+                        className="md:col-span-6 p-8 md:p-12 rounded-[32px] bg-surface-alt border border-border relative overflow-hidden group transition-all duration-300 hover:border-primary/20 shadow-sm"
+                    >
+                        <div className="relative z-10 h-full flex flex-col">
+                            <div className="text-[10px] font-black tracking-[0.3em] uppercase text-primary/60 mb-8">{aboutContent.mission.label}</div>
+                            <p className="text-xl md:text-2xl font-bold text-heading leading-relaxed mb-6">
+                                {aboutContent.mission.text}
+                            </p>
+                            <div className="mt-auto flex items-center gap-3 text-primary font-bold text-sm tracking-tight group-hover:gap-4 transition-all overflow-hidden whitespace-nowrap">
+                                {aboutContent.mission.cta} 
+                                <span className="text-xl">→</span>
+                            </div>
+                        </div>
+                    </motion.div>
+
+                    {/* Features Row */}
+                    {aboutContent.features.map((feature, i) => (
+                        <motion.div 
+                            key={i}
+                            variants={itemVariants}
+                            className="md:col-span-4 p-8 rounded-[32px] bg-surface border border-border shadow-sm hover:shadow-md transition-all group"
+                        >
+                            <div className="w-12 h-12 bg-primary-soft rounded-xl flex items-center justify-center mb-6 group-hover:bg-primary transition-colors">
+                                <div className="w-4 h-4 rounded-full border-2 border-primary group-hover:border-white transition-colors" />
+                            </div>
+                            <div className="text-[10px] font-black tracking-widest uppercase text-muted mb-2">{feature.label}</div>
+                            <h4 className="text-lg font-extrabold text-heading">{feature.title}</h4>
+                        </motion.div>
+                    ))}
+                </motion.div>
             </div>
         </section>
     )
 }
+
 export default About
+
+

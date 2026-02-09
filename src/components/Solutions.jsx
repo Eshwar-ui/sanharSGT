@@ -67,8 +67,12 @@ const Solutions = () => {
             className="flex justify-center items-center gap-10 md:gap-24 opacity-30 grayscale hover:grayscale-0 transition-all duration-500 whitespace-nowrap"
           >
             {[...solutionsContent.logos, ...solutionsContent.logos, ...solutionsContent.logos, ...solutionsContent.logos].map((logo, i) => (
-              <div key={i} className="h-6 md:h-12 flex items-center shrink-0">
-                <span className="text-lg md:text-2xl font-bold text-heading tracking-tight">{logo.name}</span>
+              <div key={i} className="h-6 md:h-8 flex items-center shrink-0 group/logo">
+                <img 
+                  src={logo.src} 
+                  alt={logo.name}
+                  className="h-full w-auto object-contain opacity-40 group-hover/logo:opacity-100 transition-opacity duration-300"
+                />
               </div>
             ))}
           </motion.div>

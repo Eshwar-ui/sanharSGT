@@ -10,10 +10,10 @@ export const solutionsContent = {
     { image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800", text: "Network Security" },
   ],
   logos: [
-    { name: "Finovance", src: "https://cdn.worldvectorlogo.com/logos/finevolve.svg" },
-    { name: "Orbit", src: "https://cdn.worldvectorlogo.com/logos/orbit-1.svg" },
-    { name: "OCTA", src: "https://cdn.worldvectorlogo.com/logos/octa-research.svg" },
-    { name: "Zain", src: "https://cdn.worldvectorlogo.com/logos/zain-1.svg" },
-    { name: "Sarv", src: "https://cdn.worldvectorlogo.com/logos/sarv.svg" },
+    { name: "Apollo", src: "https://logo.clearbit.com/apollohospitals.com" },
+    { name: "Aster", src: "https://logo.clearbit.com/asterdmhealthcare.com" },
+    { name: "NMC", src: "https://logo.clearbit.com/nmc.ae" },
+    { name: "Zulekha", src: "https://logo.clearbit.com/zulekhahospitals.com" },
+    { name: "Thumbay", src: "https://logo.clearbit.com/thumbay.com" },
   ]
 };

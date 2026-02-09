@@ -1,145 +1,155 @@
 import { useState, useEffect, useRef } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-gsap.registerPlugin(ScrollTrigger)
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
-  const dropdownRef = useRef(null)
-  const navContainerRef = useRef(null)
+  const [isVisible, setIsVisible] = useState(true)
+  const [hoveredIndex, setHoveredIndex] = useState(null)
+  
+  const { scrollY } = useScroll()
+  const lastScrollY = useRef(0)
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const diff = latest - lastScrollY.current
+    if (diff > 10 && latest > 150) {
+      if (!isOpen) setIsVisible(false)
+    } else if (diff < -10) {
+      setIsVisible(true)
+    }
+    if (latest < 50) setIsVisible(true)
+    lastScrollY.current = latest
+  })
 
   const navLinks = [
     { name: 'Solutions', href: '#solutions' },
     { name: 'Products', href: '#products' },
     { name: 'Industries', href: '#industries' },
     { name: 'About', href: '#about' },
-    { name: 'Why Us', href: '#' },
-    { name: 'Resources', href: '#' },
-    { name: 'Careers', href: '#careers' }
+    { name: 'Resources', href: '#resources' },
+    { name: 'Careers', href: '#careers' },
   ]
 
-  // Close dropdown on outside click
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      // Check if click is outside dropdown container
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target) &&
-        navContainerRef.current &&
-        !navContainerRef.current.contains(event.target)
-      ) {
-        // We only want to close if the click isn't also on the toggle button
-        // but since the toggle is inside the same parent as the nav,
-        // we can check if it's on the toggle.
-        // Actually, easiest is just if it's not in dropdownRef and it's not the toggle.
-        setIsOpen(false)
-      }
-    }
-
-    if (isOpen) {
-      document.addEventListener('mousedown', handleClickOutside)
-    }
-    return () => document.removeEventListener('mousedown', handleClickOutside)
-  }, [isOpen])
-
-  // Remove scroll lock logic since it's a dropdown
-
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 px-4 md:px-6 py-6 md:py-8 pointer-events-none">
-      <div className="max-w-[1440px] mx-auto flex items-center justify-between pointer-events-auto">
-        {/* Glassmorphic Logo Container */}
-        <div
-          ref={navContainerRef}
-          className="bg-surface/40 backdrop-blur-xl border border-border px-4 md:px-6 py-2.5 rounded-full flex items-center justify-between shrink-0 w-full lg:w-[164px] h-[58px] shadow-sm relative z-50"
-        >
-          <a href="#hero" className="flex items-center transition-all cursor-pointer">
-            <div className="text-xl md:text-2xl font-black italic tracking-tighter">
+    <motion.nav 
+      initial={{ y: 0 }}
+      animate={{ y: isVisible ? 0 : -120 }}
+      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+      className="fixed top-0 left-0 right-0 z-50 p-4 md:p-6 lg:p-8 pointer-events-none"
+    >
+      <div className="max-w-7xl mx-auto flex items-center justify-center pointer-events-auto">
+        {/* Main Pill - Ultra-Premium Glassmorphism */}
+        <div className="flex items-center gap-1 bg-white/25 backdrop-blur-xl backdrop-saturate-180 border border-white/50 p-1.5 rounded-[32px] shadow-[0_8px_32px_rgba(0,0,0,0.08),inset_0_0_0_1px_rgba(255,255,255,0.2)] transition-all duration-500 hover:shadow-[0_12px_48px_rgba(0,0,0,0.12),inset_0_0_0_1px_rgba(255,255,255,0.3)] hover:bg-white/35">
+          
+          {/* Logo Section */}
+          <a href="#hero" className="flex items-center pl-5 pr-3 group">
+            <div className="text-xl font-black italic tracking-tighter transition-transform duration-300 group-hover:scale-105">
               <span className="text-heading">S</span>
-              <span className="text-primary opacity-60">anhar</span>
+              <span className="text-primary">anhar</span>
               <span className="text-heading">SGT</span>
             </div>
           </a>
 
-          {/* Hamburger Menu Toggle (Mobile/Tablet Only) */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden flex flex-col gap-1.5 p-2 transition-all active:scale-90"
-            aria-label="Toggle Menu"
-          >
-            <motion.span
-              animate={{ rotate: isOpen ? 45 : 0, y: isOpen ? 8 : 0 }}
-              className="w-6 h-0.5 bg-heading rounded-full"
-            />
-            <motion.span
-              animate={{ opacity: isOpen ? 0 : 1 }}
-              className="w-6 h-0.5 bg-heading rounded-full"
-            />
-            <motion.span
-              animate={{ rotate: isOpen ? -45 : 0, y: isOpen ? -8 : 0 }}
-              className="w-6 h-0.5 bg-heading rounded-full"
-            />
-          </button>
-        </div>
+          <div className="hidden lg:flex items-center">
+            {navLinks.map((link, i) => (
+              <a
+                key={link.name}
+                href={link.href}
+                onMouseEnter={() => setHoveredIndex(i)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                className="relative px-4 py-2 text-[13px] font-bold text-heading/80 hover:text-primary transition-colors duration-300"
+              >
+                <AnimatePresence>
+                  {hoveredIndex === i && (
+                    <motion.div
+                      layoutId="nav-pill"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ 
+                        type: "spring", 
+                        bounce: 0.15, 
+                        duration: 0.5 
+                      }}
+                      className="absolute inset-0 bg-primary/10 rounded-xl -z-10"
+                    />
+                  )}
+                </AnimatePresence>
+                {link.name}
+              </a>
+            ))}
+          </div>
 
-        {/* Desktop Links Container */}
-        <div className="hidden lg:flex bg-surface/40 backdrop-blur-xl border border-border px-8 py-2 rounded-full items-center gap-8 h-[58px] shadow-sm transition-all duration-300">
-          {navLinks.map((item) => (
-            <a key={item.name} href={item.href} className="text-sm font-bold text-body hover:text-primary transition-colors">
-              {item.name}
+          <div className="h-6 w-px bg-heading/10 hidden lg:block mx-2" />
+
+          {/* CTA / Contact Button */}
+          <div className="flex items-center gap-2">
+            <a 
+              href="#contact" 
+              className="hidden lg:block px-6 py-2.5 bg-primary text-white text-[11px] font-black uppercase tracking-[0.15em] rounded-2xl hover:bg-primary-hover transition-all duration-300 shadow-lg shadow-primary/20 active:scale-95"
+            >
+              Contact
             </a>
-          ))}
-        </div>
 
-        {/* Desktop Contact Button */}
-        <div className="hidden lg:block shrink-0 w-[164px] h-[58px]">
-          <button className="w-full h-full bg-primary text-white border border-[#09090b]/20 rounded-full text-base font-bold hover:bg-primary-hover hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer shadow-lg shadow-primary/20">
-            Contact Us
-          </button>
+            {/* Mobile Burger Toggle */}
+            <button 
+              onClick={() => setIsOpen(!isOpen)}
+              className="lg:hidden w-11 h-11 flex flex-col items-center justify-center gap-1.5 rounded-2xl transition-all active:scale-90 hover:bg-primary/5 pl-1"
+            >
+              <motion.span 
+                animate={{ rotate: isOpen ? 45 : 0, y: isOpen ? 8 : 0 }}
+                className="w-5 h-0.5 bg-heading rounded-full"
+              />
+              <motion.span 
+                animate={{ opacity: isOpen ? 0 : 1 }}
+                className="w-5 h-0.5 bg-heading rounded-full"
+              />
+              <motion.span 
+                animate={{ rotate: isOpen ? -45 : 0, y: isOpen ? -8 : 0 }}
+                className="w-5 h-0.5 bg-heading rounded-full"
+              />
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Full-Width Mobile Top Nav */}
+      {/* Modern Mobile Menu Overlay - Enhanced Glassmorphism */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            ref={dropdownRef}
-            initial={{ y: '-100%', opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: '-100%', opacity: 0 }}
-            transition={{ type: "spring", damping: 30, stiffness: 300, mass: 0.8 }}
-            className="absolute top-0 left-0 right-0 w-full bg-white/95 backdrop-blur-3xl border-b border-border shadow-2xl rounded-b-[40px] pointer-events-auto z-40 lg:hidden flex flex-col p-6 pt-28 pb-10 overflow-hidden"
+            initial={{ opacity: 0, y: -20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -20, scale: 0.95 }}
+            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            className="absolute top-24 left-4 right-4 bg-white/70 backdrop-blur-[32px] border border-white/50 p-8 rounded-[32px] shadow-2xl z-40 lg:hidden pointer-events-auto"
           >
-            <div className="flex flex-col items-center gap-1 w-full max-w-[400px] mx-auto">
-              {navLinks.map((item, i) => (
+            <div className="grid grid-cols-1 gap-4">
+              {navLinks.map((link, i) => (
                 <motion.a
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.03 + 0.1 }}
-                  key={item.name}
-                  href={item.href}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.05 }}
+                  key={link.name}
+                  href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="text-lg font-bold text-heading hover:text-primary transition-all px-4 py-2 w-full text-center"
+                  className="flex items-center justify-between text-xl font-bold text-heading hover:text-primary transition-all group"
                 >
-                  {item.name}
+                  {link.name}
+                  <span className="opacity-0 group-hover:opacity-100 transition-opacity text-primary">→</span>
                 </motion.a>
               ))}
-              <div className="w-full flex justify-center mt-6">
-                <motion.button
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: navLinks.length * 0.03 + 0.1 }}
-                  className="px-10 py-3 bg-primary text-white border border-white/10 rounded-full text-base font-bold shadow-lg shadow-primary/20 active:scale-[0.98] transition-all w-fit"
-                >
-                  Contact Us
-                </motion.button>
-              </div>
+              <div className="h-px bg-heading/10 my-4" />
+              <motion.a 
+                href="#contact"
+                onClick={() => setIsOpen(false)}
+                className="w-full py-4 bg-primary text-white text-center font-bold rounded-2xl shadow-xl shadow-primary/20"
+              >
+                Let's Talk
+              </motion.a>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </motion.nav>
   )
 }
 

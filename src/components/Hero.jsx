@@ -83,12 +83,12 @@ const Hero = () => {
           transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
           className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 mb-10 md:mb-12 w-full sm:w-auto"
         >
-          <button className="btn-primary w-full sm:w-auto py-4 px-8 text-sm">
+          <a href="#contact" className="btn-primary w-full sm:w-auto py-4 px-8 text-sm flex items-center justify-center">
             Book An Appointment
-          </button>
-          <button className="btn-outline w-full sm:w-auto py-4 px-8 text-sm">
+          </a>
+          <a href="#solutions" className="btn-outline w-full sm:w-auto py-4 px-8 text-sm flex items-center justify-center">
             Explore Solutions
-          </button>
+          </a>
         </motion.div>
 
         {/* Stats Row - Responsive Wrap */}

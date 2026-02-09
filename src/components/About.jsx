@@ -38,9 +38,9 @@ const About = () => {
                         initial={{ opacity: 0, y: 10 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="inline-flex items-center gap-2 px-4 py-2 bg-primary-soft border border-primary/10 rounded-full text-primary text-[10px] font-black tracking-[0.2em] uppercase mb-6"
+                        className="inline-flex items-center gap-2 px-4 py-2 bg-accent-soft border border-accent/10 rounded-full text-accent text-[10px] font-black tracking-[0.2em] uppercase mb-6"
                     >
-                        <span className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />
+                        <span className="w-1.5 h-1.5 bg-accent rounded-full animate-pulse" />
                         {aboutContent.badge}
                     </motion.div>
                     <motion.h2 
@@ -97,7 +97,7 @@ const About = () => {
                         className="md:col-span-4 rounded-[32px] bg-heading overflow-hidden relative group min-h-[300px]"
                     >
                         <img 
-                            src="https://images.unsplash.com/photo-1576089234280-2a3d3963220c?auto=format&fit=crop&q=80&w=800"
+                            src="https://res.cloudinary.com/doxluexqo/image/upload/v1770616409/aboutus_gevaqn.png"
                             alt="Global Healthcare Tech"
                             className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                         />

@@ -42,7 +42,7 @@ const Solutions = () => {
         <CircularGallery
           items={solutionsContent.items}
           bend={isMobile ? 0 : 3}
-          textColor="#3F3F46"
+          textColor="#2E3A35"
           borderRadius={0.05}
           scrollSpeed={1}
           onScroll={(val) => setScrollX(val)}

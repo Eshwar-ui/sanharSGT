@@ -1,59 +1,75 @@
-import { useRef, useEffect } from 'react'
-import gsap from 'gsap'
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { testimonialsContent } from '../data/testimonialsContent'
 
 const Testimonial = () => {
-  const container = useRef(null)
+  const [activeIndex, setActiveIndex] = useState(0)
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(".testimonial-content > *", {
-        scrollTrigger: {
-          trigger: ".testimonial-content",
-          start: "top 85%",
-        },
-        y: 20,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.1
-      })
-    }, container)
-    return () => ctx.revert()
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % testimonialsContent.length)
+    }, 5000)
+    return () => clearInterval(interval)
   }, [])
 
   return (
-    <section ref={container} className="py-6 md:py-8 px-6 bg-white overflow-hidden text-center">
-      <div className="max-w-4xl mx-auto testimonial-content flex flex-col items-center">
+    <section className="py-12 md:py-20 px-6 bg-white overflow-hidden text-center">
+      <div className="max-w-4xl mx-auto flex flex-col items-center min-h-[400px]">
         {/* Star Rating */}
-        <div className="flex justify-center gap-1 mb-4 text-heading">
+        <div className="flex justify-center gap-1 mb-8 text-yellow-400">
           {[1, 2, 3, 4, 5].map(i => (
-            <svg key={i} className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+            <svg key={i} className="w-6 h-6 fill-current" viewBox="0 0 24 24">
               <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
             </svg>
           ))}
         </div>
 
-        {/* Quote */}
-        <blockquote className="text-lg md:text-[32px] md:text-3xl leading-[1.3] font-bold text-heading mb-8 max-w-3xl">
-          "A customer testimonial that highlights features and answers potential customer doubts about your product or service. Showcase testimonials from a similar demographic to your customers."
-        </blockquote>
+        <div className="relative w-full flex-1 flex items-center justify-center">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeIndex}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+              className="flex flex-col items-center"
+            >
+              {/* Quote */}
+              <blockquote className="text-xl md:text-3xl lg:text-4xl leading-snug font-bold text-heading mb-10 max-w-3xl">
+                "{testimonialsContent[activeIndex].quote}"
+              </blockquote>
 
-        {/* Profile */}
-        <div className="flex items-center gap-4">
-          {/* Avatar Icon Placeholder */}
-          <div className="w-12 h-12 rounded-full bg-zinc-100 flex items-center justify-center border border-zinc-200">
-            <svg className="w-6 h-6 text-zinc-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
-          </div>
+              {/* Profile */}
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-primary/20">
+                  <img 
+                    src={testimonialsContent[activeIndex].image} 
+                    alt={testimonialsContent[activeIndex].author} 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
 
-          <div className="flex items-center">
-            <div className="text-left pr-4">
-              <div className="text-sm font-bold text-heading">Name Surname</div>
-              <div className="text-xs text-body font-medium">Position, Company name</div>
-            </div>
-            {/* Vertical Separator */}
-            <div className="h-10 w-[1px] bg-zinc-200"></div>
-          </div>
+                <div className="text-left">
+                  <div className="text-base font-bold text-heading">{testimonialsContent[activeIndex].author}</div>
+                  <div className="text-sm text-body font-medium">{testimonialsContent[activeIndex].position}, {testimonialsContent[activeIndex].company}</div>
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Navigation Dots */}
+        <div className="flex gap-2 mt-12">
+          {testimonialsContent.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setActiveIndex(index)}
+              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                index === activeIndex ? 'bg-primary w-8' : 'bg-gray-300 hover:bg-primary/50'
+              }`}
+              aria-label={`Go to testimonial ${index + 1}`}
+            />
+          ))}
         </div>
       </div>
     </section>

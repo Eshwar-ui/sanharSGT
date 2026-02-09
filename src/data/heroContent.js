@@ -7,17 +7,20 @@ export const heroContent = {
     { value: "20+", label: "Years Experience" }
   ],
   row1: [
-    { src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800", type: "desktop" },
-    { src: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=400", type: "mobile" },
-    { src: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=800", type: "desktop" },
-    { src: "https://images.unsplash.com/photo-1522199755839-a2bacb67c546?auto=format&fit=crop&q=80&w=400", type: "mobile" },
-    { src: "https://images.unsplash.com/photo-1504868584819-f8e905b6fc79?auto=format&fit=crop&q=80&w=800", type: "desktop" },
+    { src: "https://res.cloudinary.com/doxluexqo/image/upload/v1770638472/Login_page_z14bpb.png", type: "desktop" },
+    { src: "https://res.cloudinary.com/doxluexqo/image/upload/v1770638463/Patient_Registration_mmsfpx.png", type: "desktop" },
+    { src: "https://res.cloudinary.com/doxluexqo/image/upload/v1770638558/Home_page_2_jyx0h3.jpg", type: "mobile" },
+    { src: "https://res.cloudinary.com/doxluexqo/image/upload/v1770638460/DYNAMIC_DASHBOARDS_qe5upj.png", type: "desktop" },
+    { src: "https://res.cloudinary.com/doxluexqo/image/upload/v1770638585/Patient_details_ynkoid.jpg", type: "mobile" },
+    { src: "https://res.cloudinary.com/doxluexqo/image/upload/v1770638621/eRx_Patient_details_bbdljl.png", type: "desktop" },
+    { src: "https://res.cloudinary.com/doxluexqo/image/upload/v1770638585/Login_page_pupouv.jpg", type: "mobile" },
   ],
   row2: [
-    { src: "https://images.unsplash.com/photo-1484417894907-623942c8ee29?auto=format&fit=crop&q=80&w=800", type: "desktop" },
-    { src: "https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?auto=format&fit=crop&q=80&w=400", type: "mobile" },
-    { src: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800", type: "desktop" },
-    { src: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&q=80&w=400", type: "mobile" },
-    { src: "https://images.unsplash.com/photo-1551135049-8a33b5883817?auto=format&fit=crop&q=80&w=800", type: "desktop" },
+    { src: "https://res.cloudinary.com/doxluexqo/image/upload/v1770638460/SCM_nwmopa.png", type: "desktop" },
+    { src: "https://res.cloudinary.com/doxluexqo/image/upload/v1770638556/login_page_ngwzht.jpg", type: "mobile" },
+    { src: "https://res.cloudinary.com/doxluexqo/image/upload/v1770638520/BI_DASHBOARD_pjm5jd.png", type: "desktop" },
+    { src: "https://res.cloudinary.com/doxluexqo/image/upload/v1770638556/Home_page_yuzxw9.jpg", type: "mobile" },
+    { src: "https://res.cloudinary.com/doxluexqo/image/upload/v1770638520/PURCHASE_ANALYTICS_dhrldt.png", type: "desktop" },
+    { src: "https://res.cloudinary.com/doxluexqo/image/upload/v1770638620/eRx_Patient_jwevfo.png", type: "desktop" },
   ]
 };

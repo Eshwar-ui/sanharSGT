@@ -28,7 +28,7 @@ const Contact = () => {
                             initial={{ opacity: 0, y: 10 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="inline-flex items-center gap-2 px-3 py-1.5 bg-primary-soft border border-primary/10 rounded-full text-primary text-[10px] font-black tracking-widest uppercase mb-6"
+                            className="inline-flex items-center gap-2 px-3 py-1.5 bg-accent-soft border border-accent/10 rounded-full text-accent text-[10px] font-black tracking-widest uppercase mb-6"
                         >
                             {contactContent.badge}
                         </motion.div>

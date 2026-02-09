@@ -29,7 +29,7 @@ const Hero = () => {
   const MockupCard = ({ item }) => {
     const isMobile = item.type === 'mobile'
     return (
-      <div className={`${isMobile ? 'w-[140px] h-[240px]' : 'w-[280px] h-[190px]'} rounded-[20px] overflow-hidden border-4 border-white shadow-xl backdrop-blur-sm shrink-0`}>
+      <div className={`${isMobile ? 'w-[140px]' : 'w-[360px]'} h-[240px] rounded-[20px] overflow-hidden border-4 border-white shadow-xl backdrop-blur-sm shrink-0`}>
         <img src={item.src} alt="Mockup" className="w-full h-full object-cover" />
       </div>
     )
@@ -41,7 +41,7 @@ const Hero = () => {
       ref={heroRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative min-h-[90vh] md:min-h-screen pt-32 md:pt-36 pb-4 md:pb-8 overflow-hidden bg-surface flex flex-col items-center justify-start"
+      className="relative min-h-[90vh] md:min-h-screen pt-32 md:pt-36 pb-4 md:pb-8 overflow-hidden bg-background flex flex-col items-center justify-start"
       style={{ perspective: "1500px" }}
     >
       {/* Background Grid Pattern - Fading out from the center */}
@@ -110,10 +110,10 @@ const Hero = () => {
       {/* Mockup Showcase with 3D Interaction */}
       <motion.div
         style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-        className="relative mt-8 md:mt-12 lg:mt-20 w-[140vw] flex flex-col gap-4 md:gap-6 z-20 scale-90 sm:scale-95 md:scale-100 left-1/2 -translate-x-1/2"
+        className="relative mt-8 md:mt-12 lg:mt-20 w-[180vw] flex flex-col gap-4 md:gap-6 z-20 scale-90 sm:scale-95 md:scale-100 left-1/2 -translate-x-1/2"
       >
         {/* Row 1 - Left to Right */}
-        <div className="flex gap-4 md:gap-6 overflow-hidden w-full">
+        <div className="flex gap-4 md:gap-6 overflow-visible w-full">
           <motion.div
             animate={{ x: ["0%", "-25%"] }}
             transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
@@ -126,7 +126,7 @@ const Hero = () => {
         </div>
 
         {/* Row 2 - Right to Left */}
-        <div className="flex gap-4 md:gap-6 overflow-hidden w-full">
+        <div className="flex gap-4 md:gap-6 overflow-visible w-full">
           <motion.div
             animate={{ x: ["-25%", "0%"] }}
             transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
@@ -140,7 +140,7 @@ const Hero = () => {
       </motion.div>
 
       {/* Extreme Bottom Shadow Overlay */}
-      <div className="absolute inset-x-0 bottom-0 h-24 md:h-32 bg-linear-to-t from-surface to-transparent z-30" />
+      <div className="absolute inset-x-0 bottom-0 h-24 md:h-32 bg-linear-to-t from-background to-transparent z-30" />
     </section>
   )
 }

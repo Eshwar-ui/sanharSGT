@@ -49,7 +49,7 @@ const WhyUs = () => {
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-border rounded-full text-primary text-[10px] font-black tracking-[0.2em] uppercase mb-6 shadow-sm"
+                        className="inline-flex items-center gap-2 px-4 py-2 bg-accent-soft border border-accent/20 rounded-full text-accent text-[10px] font-black tracking-[0.2em] uppercase mb-6 shadow-sm"
                     >
                         {whyUsContent.badge}
                     </motion.div>
@@ -88,7 +88,7 @@ const WhyUs = () => {
                             variants={fadeIn}
                             className="bg-surface p-8 rounded-[32px] border border-border shadow-sm hover:shadow-xl transition-all duration-500 group"
                         >
-                            <div className="w-12 h-12 bg-primary-soft rounded-2xl flex items-center justify-center text-primary mb-8 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                            <div className="w-12 h-12 bg-secondary-soft rounded-2xl flex items-center justify-center text-secondary mb-8 group-hover:bg-secondary group-hover:text-white transition-colors duration-300">
                                 {iconMap[idx]}
                             </div>
                             <h3 className="text-xl font-bold text-heading mb-6 tracking-tight">{card.title}</h3>

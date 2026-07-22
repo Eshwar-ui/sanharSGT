@@ -13,6 +13,7 @@ import Resources from './components/Resources'
 import Careers from './components/Careers'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
+import SanharChatWidget from './components/SanharChatWidget'
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
       <Careers />
       <Contact />
       <Footer />
+      <SanharChatWidget />
     </div>
   )
 }

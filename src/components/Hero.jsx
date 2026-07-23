@@ -91,17 +91,17 @@ const Hero = () => {
           </a>
         </motion.div>
 
-        {/* Stats Row - Responsive Wrap */}
+        {/* Stats Row */}
         <motion.div
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
-          className="grid grid-cols-3 gap-4 md:gap-12 py-8 border-y border-border max-w-3xl mx-auto w-full"
+          className="grid grid-cols-4 gap-1 sm:gap-3 md:gap-6 py-6 md:py-8 border-y border-border max-w-4xl mx-auto w-full"
         >
           {heroContent.stats.map((stat, i) => (
-            <div key={i} className="flex flex-col items-center">
-              <div className="text-xl md:text-3xl font-bold text-primary leading-none mb-1">{stat.value}</div>
-              <div className="text-[10px] md:text-[13px] font-medium text-body text-center">{stat.label}</div>
+            <div key={i} className="flex min-w-0 flex-col items-center px-1">
+              <div className="text-sm sm:text-lg md:text-2xl font-bold text-primary leading-none mb-1 whitespace-nowrap">{stat.value}</div>
+              <div className="text-[8px] sm:text-[10px] md:text-xs leading-tight font-medium text-body text-center">{stat.label}</div>
             </div>
           ))}
         </motion.div>

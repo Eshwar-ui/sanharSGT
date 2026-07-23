@@ -17,10 +17,10 @@ export const solutionsContent = {
     { image: scmSystem, text: "Supply Chain" },
   ],
   logos: [
-    { name: "Apollo", src: "https://placehold.co/200x80/e2e8f0/1e293b?text=Apollo" },
+    { name: "Wockhardt ", src: "https://placehold.co/200x80/e2e8f0/1e293b?text=Wockhardt" },
     { name: "Aster", src: "https://placehold.co/200x80/e2e8f0/1e293b?text=Aster" },
-    { name: "NMC", src: "https://placehold.co/200x80/e2e8f0/1e293b?text=NMC" },
-    { name: "Zulekha", src: "https://placehold.co/200x80/e2e8f0/1e293b?text=Zulekha" },
-    { name: "Thumbay", src: "https://placehold.co/200x80/e2e8f0/1e293b?text=Thumbay" },
+    { name: "Aadhaar ", src: "https://placehold.co/200x80/e2e8f0/1e293b?text=Aadhaar" },
+    { name: "MGCH", src: "https://placehold.co/200x80/e2e8f0/1e293b?text=MGCH" },
+    { name: "IKDRC", src: "https://placehold.co/200x80/e2e8f0/1e293b?text=IKDRC" },
   ]
 };

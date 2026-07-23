@@ -74,9 +74,9 @@ const Footer = () => {
           </motion.h2>
 
           {/* Copyright Floating */}
-          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-[10px] font-black tracking-[0.3em] uppercase text-muted/40">
+          {/* <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-[10px] font-black tracking-[0.3em] uppercase text-muted/40">
             © 2024 Sanhar SGT. All Rights Reserved.
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>

@@ -2,37 +2,45 @@ export const testimonialsContent = [
   {
     id: 1,
     rating: 5,
-    quote: "Sanhar's HIMS solution transformed our hospital's operational efficiency. The seamless integration across departments reduced patient wait times by 40% and significantly improved our billing accuracy.",
-    author: "Dr. Rajesh Kumar",
-    position: "Medical Director",
-    company: "Apollo Hospitals",
-    image: "https://randomuser.me/api/portraits/men/32.jpg"
+    quote:
+      "The hospital management system streamlined our workflows beyond expectations. Appointment handling, billing, and patient records are now faster and far more reliable.",
+    author: "Dr. Aarav Mehta",
+    position: "Clinical Director",
+    company: "",
+    image: "",
+    initial: "AM"
   },
   {
     id: 2,
     rating: 5,
-    quote: "The Business Intelligence dashboards provided by Sanhar give us real-time insights that are critical for decision-making. We can now track key performance indicators with ease and precision.",
-    author: "Sarah Jenning",
-    position: "Chief Operations Officer",
-    company: "Aster DM Healthcare",
-    image: "https://randomuser.me/api/portraits/women/44.jpg"
+    quote:
+      "The analytics and reporting dashboards gave us complete visibility into daily operations. Strategic planning has become data-driven and effortless.",
+    author: "Elena Brooks",
+    position: "Operations Head",
+    company: "",
+    image: "",
+    initial: "EB"
   },
   {
     id: 3,
     rating: 5,
-    quote: "Implementing the e-Prescription system was a game-changer. It eliminated medication errors and improved communication between doctors and pharmacists. Highly recommended!",
-    author: "Dr. Ayesha Khan",
-    position: "Head of Pharmacy",
-    company: "Zulekha Hospital",
-    image: "https://randomuser.me/api/portraits/women/68.jpg"
+    quote:
+      "Switching to the digital prescription module drastically reduced prescription errors and improved coordination between departments.",
+    author: "Dr. Nisha Verma",
+    position: "Pharmacy Lead",
+    company: "",
+    image: "",
+    initial: "NV"
   },
   {
     id: 4,
     rating: 5,
-    quote: "The support from the Sanhar team has been exceptional. Their Doctor Mobility app is intuitive and has empowered our physicians to access patient records on the go, improving care delivery.",
-    author: "Mr. Vikram Singh",
-    position: "IT Manager",
-    company: "NMC Healthcare",
-    image: "https://randomuser.me/api/portraits/men/75.jpg"
+    quote:
+      "The mobile access for doctors has improved response times and overall patient care. The platform is intuitive and extremely reliable.",
+    author: "Rohan Patel",
+    position: "Technology Manager",
+    company: "",
+    image: "",
+    initial: "RP"
   }
 ];

@@ -45,6 +45,7 @@ const Solutions = () => {
           textColor="#2E3A35"
           borderRadius={0.05}
           scrollSpeed={1}
+          autoScrollSpeed={0.05}
           onScroll={(val) => setScrollX(val)}
         />
       </div>

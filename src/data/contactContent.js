@@ -5,15 +5,15 @@ export const contactContent = {
     info: [
         {
             title: "General Inquiries",
-            value: "hello@sanharsgt.com"
+            value: "Sales@sanharsgt.com"
         },
         {
             title: "Support Desk",
-            value: "+1 (800) 123-4567"
+            value: "+91-9100999976 / +91-9100999972"
         },
         {
             title: "Global Headquarters",
-            value: "Mumbai, India"
+            value: "Hyderabad, India"
         }
     ],
     form: {

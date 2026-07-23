@@ -41,12 +41,20 @@ const Testimonial = () => {
 
               {/* Profile */}
               <div className="flex items-center gap-4">
-                <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-primary/20">
-                  <img 
-                    src={testimonialsContent[activeIndex].image} 
-                    alt={testimonialsContent[activeIndex].author} 
-                    className="w-full h-full object-cover"
-                  />
+                <div className="w-16 h-16 rounded-full bg-primary/5 p-1 border border-primary/10 relative overflow-hidden transition-all duration-500">
+                  <div className="w-full h-full rounded-full overflow-hidden relative">
+                    {testimonialsContent[activeIndex].image ? (
+                      <img 
+                        src={testimonialsContent[activeIndex].image} 
+                        alt={testimonialsContent[activeIndex].author} 
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center bg-primary text-white text-lg font-black">
+                        {testimonialsContent[activeIndex].initial}
+                      </div>
+                    )}
+                  </div>
                 </div>
 
                 <div className="text-left">

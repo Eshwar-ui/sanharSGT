@@ -83,9 +83,28 @@ const Locations = () => {
               <h3 className="text-xl font-bold text-heading mb-1">{office.city}</h3>
               <p className="text-primary text-[10px] font-black uppercase tracking-widest mb-6">{office.country}</p>
               
-              <div className="space-y-1">
-                <p className="text-xs text-muted font-bold tracking-tight uppercase">{office.type}</p>
-                <p className="text-[13px] text-body font-medium leading-tight opacity-70 group-hover:opacity-100 transition-opacity italic">{office.address}</p>
+              <div className="space-y-4">
+                <div>
+                  <p className="text-xs text-muted font-bold tracking-tight uppercase mb-1">{office.type}</p>
+                  <p className="text-[13px] text-body font-medium leading-tight opacity-70 group-hover:opacity-100 transition-opacity italic">{office.address}</p>
+                </div>
+                
+                <div className="space-y-2 pt-2 border-t border-border/50">
+                  {office.phone && (
+                    <div className="flex items-center gap-3 text-body/80 group-hover:text-primary transition-colors">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                      </svg>
+                      <span className="text-[12px] font-medium">{office.phone}</span>
+                    </div>
+                  )}
+                  <div className="flex items-center gap-3 text-body/80 group-hover:text-primary transition-colors">
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    <span className="text-[12px] font-medium">{office.email}</span>
+                  </div>
+                </div>
               </div>
             </motion.div>
           ))}

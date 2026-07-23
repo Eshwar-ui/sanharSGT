@@ -291,7 +291,7 @@ class App {
       borderRadius = 0,
       font = 'bold 30px Figtree',
       scrollSpeed = 1,
-      scrollEase = 0.05,
+      scrollEase = 0.5,
       onScroll
     } = {}
   ) {

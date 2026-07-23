@@ -2,9 +2,10 @@ export const heroContent = {
   heading: "Enterprise Healthcare &\nDigital Systems for Growth",
   description: "High-impact healthcare IT, enterprise platforms, and intelligent systems that scale with your organization",
   stats: [
-    { value: "200+", label: "Clients Worldwide" },
-    { value: "12", label: "Countries" },
-    { value: "20+", label: "Years Experience" }
+    { value: "8.2M+", label: "Patients Served Across Regions" },
+    { value: "6,500+", label: "Doctors Connected" },
+    { value: "18,000+", label: "Enterprise Users" },
+    { value: "10+", label: "Years of Innovation" }
   ],
   row1: [
     { src: "https://res.cloudinary.com/doxluexqo/image/upload/v1770638472/Login_page_z14bpb.png", type: "desktop" },

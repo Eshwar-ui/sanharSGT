@@ -20,12 +20,12 @@ function App() {
       <Navbar />
       <Hero />
       {/* <Logos /> */}
-      <TrustStandards />
       <Solutions />
       <Platforms />
       <Organizations />
       <Testimonial />
       <About />
+      <TrustStandards />
       <Locations />
       <WhyUs />
       <Resources />

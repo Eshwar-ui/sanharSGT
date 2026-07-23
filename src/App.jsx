@@ -7,7 +7,6 @@ import Organizations from './components/Organizations'
 import WhyUs from './components/WhyUs'
 import Testimonial from './components/Testimonial'
 import About from './components/About'
-import Team from './components/Team'
 import Locations from './components/Locations'
 import Resources from './components/Resources'
 import Careers from './components/Careers'
@@ -25,7 +24,6 @@ function App() {
       <Organizations />
       <Testimonial />
       <About />
-      <Team />
       <Locations />
       <WhyUs />
       <Resources />

@@ -62,7 +62,8 @@ const Testimonial = () => {
 
                 <div className="text-left">
                   <div className="text-base font-bold text-heading">{testimonialsContent[activeIndex].author}</div>
-                  <div className="text-sm text-body font-medium">{testimonialsContent[activeIndex].position}, {testimonialsContent[activeIndex].company}</div>
+                  <div className="text-sm text-body font-medium">{testimonialsContent[activeIndex].position}</div>
+                  <div className="text-xs text-body/80 font-medium max-w-xl">{testimonialsContent[activeIndex].company}</div>
                 </div>
               </div>
             </motion.div>

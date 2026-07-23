@@ -80,14 +80,6 @@ const About = () => {
                                     ))}
                                 </div>
                             </div>
-                            <div className="mt-8 pt-8 border-t border-border/50 flex flex-wrap gap-10">
-                                {aboutContent.mainStory.stats.map((stat, i) => (
-                                    <div key={i}>
-                                        <div className="text-3xl font-black text-primary mb-1">{stat.value}</div>
-                                        <div className="text-xs font-bold text-muted uppercase tracking-widest">{stat.label}</div>
-                                    </div>
-                                ))}
-                            </div>
                         </div>
                         <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -mr-32 -mt-32 group-hover:bg-primary/10 transition-colors duration-700" />
                     </motion.div>

@@ -6,11 +6,6 @@ export const aboutContent = {
         paragraphs: [
             "SANHAR SGT designs and delivers enterprise-grade digital infrastructure for mission-critical organizations worldwide.",
             "Our work spans hospital information systems, enterprise resource planning, and advanced analytics that drive precision and growth."
-        ],
-        stats: [
-            { value: "20+", label: "Years Experience" },
-            { value: "200+", label: "Global Clients" },
-            { value: "12", label: "Countries" }
         ]
     },
     visualCard: {

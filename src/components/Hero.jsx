@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from 'react'
 import { motion, useScroll, useTransform, useSpring, useMotionValue } from 'framer-motion'
 import { heroContent } from '../data/heroContent'
+import { optimizeImage } from '../utils/image'
 
 const Hero = () => {
   const heroRef = useRef(null)
@@ -30,7 +31,7 @@ const Hero = () => {
     const isMobile = item.type === 'mobile'
     return (
       <div className={`${isMobile ? 'w-[140px]' : 'w-[360px]'} h-[240px] rounded-[20px] overflow-hidden border-4 border-white shadow-xl backdrop-blur-sm shrink-0`}>
-        <img src={item.src} alt="Mockup" className="w-full h-full object-cover" />
+        <img src={optimizeImage(item.src, isMobile ? 320 : 720)} alt="Mockup" loading="lazy" decoding="async" fetchPriority="low" className="w-full h-full object-cover" />
       </div>
     )
   }

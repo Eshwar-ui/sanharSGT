@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { testimonialsContent } from '../data/testimonialsContent'
+import { optimizeImage } from '../utils/image'
 
 const Testimonial = () => {
   const [activeIndex, setActiveIndex] = useState(0)
@@ -45,8 +46,10 @@ const Testimonial = () => {
                   <div className="w-full h-full rounded-full overflow-hidden relative">
                     {testimonialsContent[activeIndex].image ? (
                       <img 
-                        src={testimonialsContent[activeIndex].image} 
+                        src={optimizeImage(testimonialsContent[activeIndex].image, 400)}
                         alt={testimonialsContent[activeIndex].author} 
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-full object-cover"
                       />
                     ) : (

@@ -3,6 +3,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { motion } from 'framer-motion'
 import { industriesContent } from '../data/industriesContent'
+import { optimizeImage } from '../utils/image'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -66,8 +67,10 @@ const Organizations = () => {
         </div>
         <div className={`relative h-[240px] md:h-full overflow-hidden ${isImageLeft ? "md:order-1" : "md:order-2"}`}>
           <img 
-            src={item.image} 
+            src={optimizeImage(item.image, 800)}
             alt={item.title} 
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           />
           <div className="absolute inset-0 bg-heading/5 group-hover:bg-transparent transition-colors duration-500" />
@@ -93,8 +96,10 @@ const Organizations = () => {
         </div>
         <div className="h-[300px] md:h-[350px] w-full relative overflow-hidden">
           <img 
-            src={item.image} 
+            src={optimizeImage(item.image, 1000)}
             alt={item.title} 
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
           <div className="absolute inset-0 bg-heading/5 group-hover:bg-transparent transition-colors duration-500" />

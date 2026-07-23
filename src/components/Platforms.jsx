@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { productsContent } from '../data/productsContent'
+import { optimizeImage } from '../utils/image'
 
 const Platforms = () => {
   const [activeIndex, setActiveIndex] = useState(0)
@@ -117,8 +118,10 @@ const Platforms = () => {
                         className="w-full h-[220px] md:h-[400px] rounded-2xl md:rounded-[32px] overflow-hidden bg-zinc-100"
                       >
                         <img
-                          src={item.image}
+                          src={optimizeImage(item.image, 1000)}
                           alt={item.title}
+                          loading="lazy"
+                          decoding="async"
                           className="w-full h-full object-cover"
                         />
                       </motion.div>

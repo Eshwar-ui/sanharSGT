@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { useRef } from 'react'
 import { aboutContent } from '../data/aboutContent'
+import { optimizeImage } from '../utils/image'
 
 const About = () => {
     const sectionRef = useRef(null)
@@ -97,8 +98,10 @@ const About = () => {
                         className="md:col-span-4 rounded-[32px] bg-heading overflow-hidden relative group min-h-[300px]"
                     >
                         <img 
-                            src="https://res.cloudinary.com/doxluexqo/image/upload/v1770616409/aboutus_gevaqn.png"
+                            src={optimizeImage("https://res.cloudinary.com/doxluexqo/image/upload/v1770616409/aboutus_gevaqn.png", 1200)}
                             alt="Global Healthcare Tech"
+                            loading="lazy"
+                            decoding="async"
                             className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                         />
                         <div className="absolute inset-0 bg-primary/20 mix-blend-overlay z-10" />

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { locationsContent } from '../data/locationsContent'
+import { optimizeImage } from '../utils/image'
 
 const Locations = () => {
   const containerVariants = {
@@ -67,8 +68,10 @@ const Locations = () => {
             >
               <div className="relative h-48 -mx-8 -mt-8 mb-8 overflow-hidden rounded-t-card">
                 <img 
-                  src={office.image} 
+                  src={optimizeImage(office.image, 800)}
                   alt={office.city}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-primary/20 mix-blend-multiply opacity-30 group-hover:opacity-10 transition-opacity" />

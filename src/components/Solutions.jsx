@@ -72,6 +72,8 @@ const Solutions = () => {
                 <img 
                   src={logo.src} 
                   alt={logo.name}
+                  loading="lazy"
+                  decoding="async"
                   className="h-full w-auto object-contain opacity-40 group-hover/logo:opacity-100 transition-opacity duration-300"
                 />
               </div>

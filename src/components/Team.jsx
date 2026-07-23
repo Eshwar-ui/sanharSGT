@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { teamContent } from '../data/teamContent'
+import { optimizeImage } from '../utils/image'
 
 const Team = () => {
   return (
@@ -47,8 +48,10 @@ const Team = () => {
                   <div className="w-full h-full rounded-full overflow-hidden relative">
                     {leader.image ? (
                       <img 
-                        src={leader.image} 
+                        src={optimizeImage(leader.image, 600)}
                         alt={leader.name}
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       />
                     ) : (

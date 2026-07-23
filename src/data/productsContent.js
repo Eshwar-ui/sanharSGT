@@ -1,4 +1,4 @@
-import bloodBankImage from "../assets/platforms/blood-bank-management.png"
+import bloodBankImage from "../assets/platforms/blood-bank-management.webp"
 
 export const productsContent = {
   heading: "Modern Healthcare Platforms",

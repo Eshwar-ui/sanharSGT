@@ -1,3 +1,5 @@
+import bloodBankImage from "../assets/platforms/blood-bank-management.png"
+
 export const productsContent = {
   heading: "Modern Healthcare Platforms",
   subheading: "Enterprise systems ready for immediate implementation and global scale.",
@@ -20,9 +22,9 @@ export const productsContent = {
     },
     {
       id: "03",
-      title: "Radiology Systems",
-      heading: "Advanced RIS/PACS",
-      description: "High-speed viewing and secure storage for complex medical imaging departments.",
+      title: "Radiology Information System (RIS)",
+      heading: "Simplify diagnostic imaging workflows.",
+      description: "Manage imaging requests, scheduling, reporting, and patient history while improving collaboration between radiologists and clinicians.",
       image: "https://res.cloudinary.com/doxluexqo/image/upload/v1770614592/product_3_u4flek.png",
       icon: "activity"
     },
@@ -49,6 +51,14 @@ export const productsContent = {
       description: "Manage HR, payroll, and asset lifecycles with industry-specific ERP modules.",
       image: "https://res.cloudinary.com/doxluexqo/image/upload/v1770614583/product_6_eiaiw7.png",
       icon: "bar-chart"
+    },
+    {
+      id: "07",
+      title: "Blood Bank Management",
+      heading: "Ensure safe and reliable blood inventory.",
+      description: "Manage donor records, blood collection, testing, inventory, compatibility checks, and distribution with complete traceability.",
+      image: bloodBankImage,
+      icon: "droplet"
     }
   ]
 };

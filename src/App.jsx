@@ -1,6 +1,7 @@
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Logos from './components/Logos'
+import TrustStandards from './components/TrustStandards'
 import Solutions from './components/Solutions'
 import Platforms from './components/Platforms'
 import Organizations from './components/Organizations'
@@ -19,6 +20,7 @@ function App() {
       <Navbar />
       <Hero />
       {/* <Logos /> */}
+      <TrustStandards />
       <Solutions />
       <Platforms />
       <Organizations />

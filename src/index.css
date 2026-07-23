@@ -84,3 +84,33 @@ html, body {
   display: none; /* Chrome, Safari and Opera */
 }
 
+.trust-marquee {
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+}
+
+.trust-marquee-track {
+  animation: trust-marquee 42s linear infinite;
+}
+
+.trust-marquee:hover .trust-marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes trust-marquee {
+  to {
+    transform: translateX(calc(-50% - 0.5rem));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trust-marquee {
+    overflow-x: auto;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+
+  .trust-marquee-track {
+    animation: none;
+  }
+}

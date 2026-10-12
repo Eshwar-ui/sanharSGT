@@ -1,16 +1,82 @@
-# React + Vite
+# SanharSGT Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Marketing website for **SanharSGT** — enterprise healthcare IT, Hospital Information Management Systems (HIMS), business intelligence, and digital healthcare platforms for hospitals and medical institutions.
 
-Currently, two official plugins are available:
+Live site: [www.sanharsgt.com](https://www.sanharsgt.com/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
 
-## React Compiler
+- [React 19](https://react.dev/) + [Vite 7](https://vite.dev/)
+- [Tailwind CSS 4](https://tailwindcss.com/) (via `@tailwindcss/vite`)
+- [Framer Motion](https://motion.dev/) and [GSAP](https://gsap.com/) for animation
+- [OGL](https://github.com/oframe/ogl) for WebGL effects (circular gallery)
+- [Firebase Hosting](https://firebase.google.com/docs/hosting) for deployment
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Getting Started
 
-## Expanding the ESLint configuration
+**Prerequisites:** Node.js 20.19+ (or 22.12+) and npm.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm install      # install dependencies
+npm run dev      # start the dev server (exposed on your LAN via --host)
+```
+
+The dev server runs at <http://localhost:5173> by default.
+
+## Scripts
+
+| Command           | Description                                  |
+| :---------------- | :------------------------------------------- |
+| `npm run dev`     | Start the Vite dev server with hot reload    |
+| `npm run build`   | Build the production site into `dist/`       |
+| `npm run preview` | Serve the production build locally           |
+| `npm run lint`    | Run ESLint across the project                |
+
+## Project Structure
+
+```
+├── public/              # Static files served as-is (favicon, manifest, robots.txt, sitemap.xml, certifications)
+├── src/
+│   ├── components/      # One component per page section (Hero, Solutions, Platforms, Contact, …)
+│   ├── data/            # All editable site content, one file per section
+│   ├── utils/           # Shared helpers (image handling)
+│   ├── App.jsx          # Page layout — the order sections appear in
+│   ├── main.jsx         # App entry point
+│   └── index.css        # Global styles and Tailwind setup
+├── index.html           # HTML shell with SEO / Open Graph meta tags
+├── firebase.json        # Firebase Hosting config (serves dist/)
+└── CLIENT_HANDOFF.md    # Non-technical guide to editing content
+```
+
+## Editing Content
+
+All copy, stats, images, and lists live in [`src/data/`](src/data/), separate from the component code. To change what the site says, edit the matching data file — for example, [`heroContent.js`](src/data/heroContent.js) controls the homepage banner and headline stats.
+
+See [CLIENT_HANDOFF.md](CLIENT_HANDOFF.md) for a step-by-step guide aimed at non-developers.
+
+To add, remove, or reorder page sections, edit [`src/App.jsx`](src/App.jsx).
+
+## Deployment
+
+The site is hosted on Firebase (project `sanhar-sgt`) and served from the `dist/` folder.
+
+```bash
+npm run build
+firebase deploy --only hosting
+```
+
+Deploying requires the [Firebase CLI](https://firebase.google.com/docs/cli) (`npm install -g firebase-tools`) and access to the Firebase project (`firebase login`).
+
+## Repositories
+
+This project is mirrored to two remotes:
+
+- `origin` — <https://github.com/Eshwar-ui/sanharSGT>
+- `org` — <https://github.com/Velvo-media/sanhar-website>
+
+Push changes to both with:
+
+```bash
+git push origin <branch>
+git push org <branch>
+```

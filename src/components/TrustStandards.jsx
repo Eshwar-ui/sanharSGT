@@ -1,27 +1,38 @@
 import { motion } from 'framer-motion'
 
 const standards = [
-  { mark: 'HIPAA', label: 'Privacy & Security', tone: 'text-[#24528f]' },
-  { mark: 'HL7', label: 'Health Data Exchange', tone: 'text-[#d7222a]' },
-  { mark: 'DICOM', label: 'Medical Imaging', tone: 'text-[#14233f]' },
-  { mark: 'CPT®', label: 'Procedural Terminology', tone: 'text-[#b8860b]' },
-  { mark: 'ISO', label: '21500:2012 Project Guidance', tone: 'text-[#1d4f91]' },
-  { mark: 'ISO 27001', label: 'Information Security', tone: 'text-[#9a6a00]' },
-  { mark: 'GDPR', label: 'Data Protection', tone: 'text-[#3451b2]' },
-  { mark: 'NABH', label: 'Healthcare Quality', tone: 'text-[#d22f39]' },
-  { mark: 'ICD-10', label: 'Clinical Classification', tone: 'text-[#3c9e9a]' },
-  { mark: 'ABDM', label: 'M1 · M2 · M3 Integrated', tone: 'text-[#243e78]' },
-  { mark: 'QMS', label: 'Quality Approved', tone: 'text-[#a7780d]' },
+  { mark: 'HIPAA', label: 'Privacy & Security', tone: 'text-[#24528f]', img: '/certifications/hipaa.webp' },
+  { mark: 'HL7', label: 'Health Data Exchange', tone: 'text-[#d7222a]', img: '/certifications/hl7.webp' },
+  { mark: 'DICOM', label: 'Medical Imaging', tone: 'text-[#14233f]', img: '/certifications/dicom.webp' },
+  { mark: 'CPT®', label: 'Procedural Terminology', tone: 'text-[#b8860b]', img: '/certifications/cpt.webp' },
+  { mark: 'ISO', label: '21500:2012 Project Guidance', tone: 'text-[#1d4f91]', img: '/certifications/iso21500.webp' },
+  { mark: 'ISO 27001', label: 'Information Security', tone: 'text-[#9a6a00]', img: '/certifications/iso27001.webp' },
+  { mark: 'GDPR', label: 'Data Protection', tone: 'text-[#3451b2]', img: '/certifications/gdpr.webp' },
+  { mark: 'NABH', label: 'Healthcare Quality', tone: 'text-[#d22f39]', img: '/certifications/nabh.webp' },
+  { mark: 'ICD-10', label: 'Clinical Classification', tone: 'text-[#3c9e9a]', img: '/certifications/icd10.webp' },
+  { mark: 'ABDM', label: 'M1 · M2 · M3 Integrated', tone: 'text-[#243e78]', img: '/certifications/abdm.webp' },
+  { mark: 'QMS', label: 'Quality Approved', tone: 'text-[#a7780d]', img: '/certifications/qms.webp' },
 ]
 
 const StandardMark = ({ item }) => (
-  <div className="group flex h-[92px] w-[230px] shrink-0 items-center gap-4 rounded-2xl border border-heading/8 bg-background/80 px-5 transition-colors hover:bg-background">
-    <div className={`flex h-14 min-w-14 items-center justify-center rounded-full border border-current/20 bg-white px-2 text-center text-sm font-black leading-tight ${item.tone}`}>
-      {item.mark}
-    </div>
-    <div>
-      <div className={`text-base font-extrabold leading-tight ${item.tone}`}>{item.mark}</div>
-      <div className="mt-1 text-[11px] font-semibold leading-tight text-muted">{item.label}</div>
+  <div className="group flex h-28 w-67 shrink-0 items-center rounded-2xl border border-heading/8 bg-white px-5 shadow-[0_1px_3px_rgba(15,23,42,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_28px_rgba(15,23,42,0.12)]">
+    {item.img ? (
+      <div className="flex h-19 w-27 min-w-27 items-center justify-center">
+        <img
+          src={item.img}
+          alt={`${item.mark} logo`}
+          loading="lazy"
+          className="max-h-19 max-w-27 object-contain transition-transform duration-300 group-hover:scale-105"
+        />
+      </div>
+    ) : (
+      <div className={`flex h-16 w-27 min-w-27 items-center justify-center rounded-xl bg-current/6 px-2 text-center text-lg font-black leading-tight ${item.tone}`}>
+        {item.mark}
+      </div>
+    )}
+    <div className="ml-4 border-l border-heading/10 pl-4">
+      <div className={`text-[15px] font-extrabold leading-tight ${item.tone}`}>{item.mark}</div>
+      <div className="mt-1 text-[11px] font-semibold leading-snug text-muted">{item.label}</div>
     </div>
   </div>
 )
@@ -63,24 +74,22 @@ const TrustStandards = () => {
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
             <div className="flex min-h-24 items-center gap-5 rounded-2xl bg-background px-6 py-5">
-              <svg aria-hidden="true" viewBox="0 0 64 64" className="h-14 w-14 shrink-0 text-[#17104f]">
-                <path d="M29 9v20c0 5-3 8-7 10l-5 3c-5 3-8 8-8 14h18c4 0 7-3 7-7V9m1 0v20c0 5 3 8 7 10l5 3c5 3 8 8 8 14H37c-4 0-7-3-7-7" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-              <div>
-                <div className="text-2xl font-extrabold tracking-tight text-[#17104f]">Lung<span className="text-[#8d4b91]">Health</span></div>
-                <div className="text-xs font-semibold text-muted">Clinical knowledge collaboration</div>
-              </div>
+              <img
+                src="/certifications/lunghealth.webp"
+                alt="LungHealth logo"
+                loading="lazy"
+                className="h-14 max-w-40 shrink-0 object-contain"
+              />
+              <div className="text-xs font-semibold text-muted">Clinical knowledge collaboration</div>
             </div>
             <div className="flex min-h-24 items-center gap-5 rounded-2xl bg-background px-6 py-5">
-              <div aria-hidden="true" className="grid h-14 w-14 shrink-0 grid-cols-3 overflow-hidden rounded-full">
-                {['#68a7d3','#83bd48','#68a7d3','#83bd48','#e73770','#83bd48','#68a7d3','#83bd48','#68a7d3'].map((color, index) => (
-                  <span key={index} style={{ backgroundColor: color }} />
-                ))}
-              </div>
-              <div>
-                <div className="text-2xl font-medium tracking-tight text-[#222b37]">Wolters Kluwer</div>
-                <div className="text-xs font-semibold text-muted">Healthcare information collaboration</div>
-              </div>
+              <img
+                src="/certifications/wolters-kluwer.webp"
+                alt="Wolters Kluwer logo"
+                loading="lazy"
+                className="h-12 max-w-44 shrink-0 object-contain"
+              />
+              <div className="text-xs font-semibold text-muted">Healthcare information collaboration</div>
             </div>
           </div>
         </div>

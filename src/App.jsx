@@ -10,7 +10,6 @@ import Testimonial from './components/Testimonial'
 import About from './components/About'
 import Locations from './components/Locations'
 import Resources from './components/Resources'
-import Careers from './components/Careers'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 
@@ -29,7 +28,6 @@ function App() {
       <Locations />
       <WhyUs />
       <Resources />
-      <Careers />
       <Contact />
       <Footer />
     </div>

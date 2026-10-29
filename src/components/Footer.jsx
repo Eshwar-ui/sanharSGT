@@ -8,7 +8,6 @@ const Footer = () => {
     { name: "About", href: "#about" },
     { name: "Why Us", href: "#why-us" },
     { name: "Resources", href: "#resources" },
-    { name: "Careers", href: "#careers" },
   ]
 
   const legalLinks = [

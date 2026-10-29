@@ -26,7 +26,6 @@ const Navbar = () => {
     { name: 'Industries', href: '#industries' },
     { name: 'About', href: '#about' },
     { name: 'Resources', href: '#resources' },
-    { name: 'Careers', href: '#careers' },
   ]
 
   return (
